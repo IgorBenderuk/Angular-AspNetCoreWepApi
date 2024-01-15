@@ -1,0 +1,13 @@
+.nav-links {
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: beige;
+}
+
+.link {
+    margin: 15px;
+    font-size: 35px;
+}
+.icon {
+    width: 10%;
+}

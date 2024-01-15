@@ -1,0 +1,55 @@
+<div class="container" >
+    <div class="formWrapper">
+
+        <form [formGroup]="userLogUp" class="fommLogUp" id="sign-Up-form" >
+        
+            <h1 class="Label">Sign Up</h1>
+            
+            <label for="firstNameInput" class="InputLabel">First Name : </label>
+            <input id="firstNameInput" type="text" formControlName="firstName"  placeholder="Enter first name" class="formInput" [ngClass]="{'isValid':firstNameFormControl.valid && firstNameFormControl.touched,'isInvalid':firstNameFormControl.invalid && firstNameFormControl.touched } " >
+            <div *ngIf="firstNameFormControl.invalid && firstNameFormControl.touched" class="error-message">
+                <div *ngIf="firstNameFormControl.errors?.['required']">Name is required</div>
+                <div *ngIf="firstNameFormControl.errors?.['nameEror'] ">this name is prohibited </div>
+            </div>
+
+            <label for="EmalInput" class="InputLabel" >Email : </label>
+            <input  id="EmalInput" type="text" formControlName="email" placeholder="Enter your gmail" class="formInput" [ngClass]="{'isValid': emailFormControl.touched && emailFormControl.valid, 'isInvalid': emailFormControl.invalid && emailFormControl.touched}" >
+            <div *ngIf="emailFormControl.invalid && emailFormControl.touched" class="error-message">
+                <div *ngIf="emailFormControl.errors?.['required']" >Email is required.</div>
+                <div *ngIf="emailFormControl.errors?.['email']" > Email: example `at` example.com</div>
+                <div *ngIf="emailFormControl.errors?.['emailEror']"  >account with that email already exists</div>
+            </div>
+
+            <Label for="ageInput"class="InputLabel" > Age :</Label>
+            <input id="ageInput" type="number" formControlName="age" placeholder="Enter your age" class="formInput" [ngClass]="{'isValid': ageFormControl.touched && ageFormControl.valid, 'isInvalid': ageFormControl.invalid && ageFormControl.touched}" >
+            <div *ngif="ageFormControl.invalid && ageFormControl.touched" class="error-message">
+                <div *ngIf="ageFormControl.errors?.['required']" > age is required </div>
+             </div>    
+
+            <label for="passwordInput" class="InputLabel">Password : </label>
+            <input id="passwordInput" type="text" formControlName="password" placeholder="Enter your password" class="formInput" [ngClass]="{'isValid': passwordFormControl.touched && passwordFormControl.valid, 'isInvalid': passwordFormControl.invalid && passwordFormControl.touched}"  >  
+            <div *ngIf="passwordFormControl.invalid && passwordFormControl.touched">
+                <div *ngIf="passwordFormControl.errors?.['required']" class="error-message">Password is required.</div>
+                <div *ngIf=" passwordFormControl.errors?.['pattern']" class="error-message"> Must containe: one capital, one small and one digit charecter</div>
+                  
+            </div>
+            <label for="confirmPasswordInput" class="InputLabel">Confirm your password</label>
+            <input id="confirmPasswordInput" type="text" formControlName="confirmPassword" placeholder="Confirm entered password" class="formInput" [ngClass]="{'isValid': confirmPasswordFormControl.touched && confirmPasswordFormControl.valid, 'isInvalid': confirmPasswordFormControl.invalid && confirmPasswordFormControl.touched}" >
+            <div *ngIf="confirmPasswordFormControl.invalid && confirmPasswordFormControl.touched" class=" error-message" >
+            <div *ngIf="confirmPasswordFormControl.errors?.['missmatch']" >Paswords should match </div>
+            </div>
+
+            <div class="button-Wrapper" >
+                <Button type="button" class="sign-Up-btn"  [routerLink]="['/'] " >Sign In</Button>
+                <button type="button" class="sign-Up-btn" (click)="CreateUser()" [disabled]="!userLogUp.valid" id="signUpButton" >Sign Up </button>
+            </div>
+            
+        </form>
+        
+    </div>
+    
+    
+    
+    </div>
+
+

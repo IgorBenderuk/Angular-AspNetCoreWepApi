@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.logIn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nav {
+    display:  flex;
+    flex-direction: row;
+}
+
+
+header {
+    text-align: center;
+    font-size: 30px;
+}

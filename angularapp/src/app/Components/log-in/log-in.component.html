@@ -1,0 +1,38 @@
+<div class="container">
+    
+    <div class="formWrapper">
+
+        <h1 class="Label" >Log in</h1>
+
+        <form [formGroup]="userLogIn" class="userLogIn" id="sign-In-form" #form="ngForm">
+        
+            <label for="EmailInput" class="InputLabel">Email </label>
+            <input type="text" id="EmailInput" placeholder="Enter your email" formControlName="email" class="formInput" [ngClass]="{ 'isInvalid':emailFormControl.invalid && emailFormControl.touched, 'isValid':emailFormControl.valid && emailFormControl.touched} ">
+            <div *ngIf="emailFormControl.invalid && emailFormControl.touched" >
+                <div *ngIf="emailFormControl.errors?.['required']" class="error-message">Email is required.</div>
+                <div *ngIf="emailFormControl.errors?.['email']" class="error-message" > Email: example `at` example.com</div>
+                <div *ngIf="emailFormControl.errors?.['emailEror']" class="error-message" >it is any account asociated with this email</div>
+            </div>
+            
+            <label for="passwordInput" class="InputLabel">Password</label>
+            <input type="text" id="passwordInput" placeholder="enter your password" formControlName="password" class="formInput" [ngClass]="{'isValid': passwordFormControl.touched && passwordFormControl.valid, 'isInvalid' : passwordFormControl.invalid && passwordFormControl.touched}"  >
+            <div *ngIf="passwordFormControl.invalid && passwordFormControl.touched" >
+                <div *ngIf="passwordFormControl.errors?.['required']" class="error-message">Password is required.</div>
+                <div *ngIf=" passwordFormControl.errors?.['pattern']" class="error-message"> 
+                    Must containe: one capital, one small and one digit charecter
+                  </div>
+            </div>
+            <div class="button-Wrapper" >
+                <button type="button" class="sign-In-btn" [disabled]="!userLogIn.valid" (click)="logIn()"   >Sign In</button>
+                <Button type="button" class="sign-In-btn"  [routerLink]="['/logUp']">Sign Up </Button>
+            </div>
+            
+          </form>
+    </div>
+        
+    
+    
+    
+    </div>
+
+
